@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RentGuard AI — Your AI property manager for small landlords. Tenant screening, maintenance triage, lease tools, cash flow analysis. Always on.">
+<meta property="og:title" content="RentGuard AI — Your AI Property Manager. Always On.">
+<meta property="og:description" content="The first AI assistant built specifically for landlords with 1–10 units. Screen tenants, triage maintenance, analyze cash flow, generate lease documents — all in one place.">
+<meta property="og:type" content="website">
+<title>RentGuard AI — Your AI Property Manager. Always On.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RENTGUARD — LAUNCH PAGE
+   Aesthetic: Deep navy + teal — clean enterprise
+   Vibe: Calm authority. Built for busy landlords.
+   ══════════════════════════════════════ */
+:root {
+  --navy: #080d1c;
+  --navy-2: #0d1529;
+  --navy-3: #131e3a;
+  --navy-4: #1a2849;
+  --border: rgba(255,255,255,.06);
+  --border-2: rgba(255,255,255,.11);
+  --teal: #14b8a6;
+  --teal-2: #2dd4bf;
+  --teal-3: #5eead4;
+  --teal-dim: rgba(20,184,166,.1);
+  --teal-glow: rgba(20,184,166,.04);
+  --text: #eef2ff;
+  --text-2: #94a3b8;
+  --text-3: #475569;
+  --green: #4ade80;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --max: 1140px;
+  --font-d: 'Playfair Display', Georgia, serif;
+  --font-b: 'Sora', system-ui, sans-serif;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: var(--navy); color: var(--text); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--navy-4); }
+
+/* ── SUBTLE GRID BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: linear-gradient(rgba(20,184,166,.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(20,184,166,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 0 32px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .3s;
+}
+.nav.scrolled {
+  background: rgba(8,13,28,.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--font-d); font-size: 22px; font-weight: 700; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--teal); }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--text-2); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  padding: 8px 20px; background: var(--teal); color: var(--navy);
+  border: none; border-radius: var(--radius); font-family: var(--font-b);
+  font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none;
+  transition: background .15s;
+}
+.nav-cta:hover { background: var(--teal-2); }
+@media (max-width: 700px) { .nav-links { display: none; } .nav { padding: 0 20px; } }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 100px 32px 80px; position: relative; z-index: 1;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+  background: linear-gradient(transparent, var(--navy));
+  pointer-events: none;
+}
+.teal-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.orb-1 { width: 600px; height: 600px; background: rgba(20,184,166,.06); top: -100px; right: -100px; }
+.orb-2 { width: 400px; height: 400px; background: rgba(20,184,166,.04); bottom: 0; left: -100px; }
+
+.hero-inner { max-width: var(--max); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; }
+@media (max-width: 960px) { .hero-inner { grid-template-columns: 1fr; } }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; color: var(--teal);
+  text-transform: uppercase; letter-spacing: .16em;
+  padding: 5px 14px; background: var(--teal-dim); border: 1px solid rgba(20,184,166,.2);
+  border-radius: 99px; margin-bottom: 24px;
+  opacity: 0; transform: translateY(12px); animation: up .5s .1s ease forwards;
+}
+.hero-h1 {
+  font-family: var(--font-d); font-size: clamp(48px, 5.5vw, 76px);
+  font-weight: 700; line-height: 1.02; letter-spacing: -.02em;
+  margin-bottom: 22px;
+  opacity: 0; transform: translateY(18px); animation: up .6s .2s ease forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--teal); }
+.hero-p {
+  font-size: 18px; font-weight: 300; color: var(--text-2); line-height: 1.7;
+  max-width: 500px; margin-bottom: 36px;
+  opacity: 0; transform: translateY(14px); animation: up .5s .35s ease forwards;
+}
+.hero-btns {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  opacity: 0; transform: translateY(12px); animation: up .5s .5s ease forwards;
+}
+.btn-hero {
+  padding: 13px 28px; background: var(--teal); color: var(--navy);
+  border: none; border-radius: var(--radius);
+  font-family: var(--font-d); font-size: 17px; font-weight: 700;
+  cursor: pointer; text-decoration: none; transition: background .15s, transform .1s;
+  display: inline-flex; align-items: center; gap: 8px; letter-spacing: .01em;
+}
+.btn-hero:hover { background: var(--teal-2); transform: translateY(-1px); }
+.btn-ghost { font-size: 14px; color: var(--text-2); text-decoration: none; transition: color .15s; }
+.btn-ghost:hover { color: var(--text); }
+.hero-proof {
+  margin-top: 36px; display: flex; align-items: center; gap: 16px;
+  opacity: 0; animation: up .5s .65s ease forwards;
+}
+.proof-num { font-family: var(--font-d); font-size: 26px; font-weight: 700; color: var(--teal); line-height: 1; }
+.proof-label { font-size: 12px; color: var(--text-3); }
+.proof-sep { width: 1px; height: 32px; background: var(--border-2); }
+
+/* ── HERO UI CARD ── */
+.hero-ui {
+  opacity: 0; transform: translateY(20px) scale(.98);
+  animation: up-card .8s .4s ease forwards;
+}
+.ui-card {
+  background: var(--navy-2); border: 1px solid var(--border-2);
+  border-radius: var(--radius-xl); overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 0 1px var(--border);
+}
+.ui-bar {
+  padding: 12px 16px; background: var(--navy-3); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.ui-dots { display: flex; gap: 5px; }
+.ud { width: 9px; height: 9px; border-radius: 50%; }
+.ud1 { background: #ff5f57; } .ud2 { background: #febc2e; } .ud3 { background: #28c840; }
+.ui-title { font-size: 11px; color: var(--text-3); margin-left: auto; margin-right: auto; font-family: var(--font-d); }
+.ui-body { padding: 20px; }
+.ui-chat-msg {
+  background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 4px;
+  padding: 12px 14px; font-size: 13px; color: var(--text-2); margin-bottom: 12px; line-height: 1.5;
+}
+.ui-chat-reply {
+  background: var(--teal); color: var(--navy);
+  border-radius: var(--radius-lg) var(--radius-lg) 4px var(--radius-lg);
+  padding: 12px 14px; font-size: 13px; margin-bottom: 12px; line-height: 1.5; align-self: flex-end;
+}
+.ui-triage {
+  background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 14px; margin-bottom: 12px;
+}
+.ui-triage-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.ui-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; }
+.ui-b-urgent { background: rgba(251,191,36,.12); color: var(--amber); }
+.ui-b-ok { background: rgba(74,222,128,.1); color: var(--green); }
+.ui-triage-row { font-size: 12px; color: var(--text-2); display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--border); }
+.ui-triage-row:last-child { border-bottom: none; }
+.ui-checks { display: flex; flex-direction: column; gap: 6px; }
+.ui-check { display: flex; gap: 8px; font-size: 12px; color: var(--text-2); align-items: center; }
+.ui-check-ok { color: var(--green); font-size: 12px; }
+.ui-score { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+.ui-ring { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--green); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; background: rgba(74,222,128,.07); flex-shrink: 0; }
+
+@keyframes up { to { opacity: 1; transform: none; } }
+@keyframes up-card { to { opacity: 1; transform: none; } }
+
+/* ── SECTION BASE ── */
+section { padding: 100px 32px; position: relative; z-index: 1; }
+.inner { max-width: var(--max); margin: 0 auto; }
+.s-label { font-size: 11px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: .16em; margin-bottom: 14px; }
+.s-title { font-family: var(--font-d); font-size: clamp(34px, 4vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }
+.s-sub { font-size: 17px; font-weight: 300; color: var(--text-2); max-width: 560px; line-height: 1.65; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.divider { height: 1px; background: var(--border); max-width: var(--max); margin: 0 auto; }
+
+/* ── TRUST BAR ── */
+.trust-bar { padding: 22px 32px; background: var(--navy-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.trust-inner { max-width: var(--max); margin: 0 auto; display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; align-items: center; }
+.trust-chip { font-size: 13px; color: var(--text-3); display: flex; align-items: center; gap: 7px; }
+.trust-chip strong { color: var(--text-2); }
+.trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--navy-4); }
+
+/* ── MODULE GRID ── */
+.modules-bg { background: var(--navy-2); }
+.module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 52px; }
+@media (max-width: 800px) { .module-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .module-grid { grid-template-columns: 1fr; } }
+.module-cell { background: var(--navy-2); padding: 28px; transition: background .2s; }
+.module-cell:hover { background: var(--navy-3); }
+.mod-num { font-family: var(--font-d); font-size: 36px; font-weight: 700; color: var(--navy-3); margin-bottom: 14px; line-height: 1; }
+.mod-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.mod-title { font-family: var(--font-d); font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+.mod-desc { font-size: 14px; color: var(--text-2); line-height: 1.55; }
+.mod-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.mod-tag { font-size: 10px; padding: 2px 8px; border-radius: 99px; background: var(--teal-dim); color: var(--teal); font-weight: 500; }
+
+/* ── COMPARISON TABLE ── */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 52px; }
+@media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+.compare-card { background: var(--navy-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.compare-card.highlighted { border-color: rgba(20,184,166,.4); background: rgba(20,184,166,.03); }
+.cc-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); margin-bottom: 10px; }
+.cc-title { font-family: var(--font-d); font-size: 20px; font-weight: 600; margin-bottom: 14px; }
+.cc-title.good { color: var(--teal); }
+.cc-list { list-style: none; }
+.cc-list li { font-size: 13px; color: var(--text-2); padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; line-height: 1.4; }
+.cc-list li:last-child { border-bottom: none; }
+.cc-check-good { color: var(--teal); flex-shrink: 0; }
+.cc-check-bad { color: var(--red); flex-shrink: 0; }
+
+/* ── PRICING ── */
+.price-section { background: var(--navy-2); }
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 52px; }
+@media (max-width: 700px) { .price-grid { grid-template-columns: 1fr; } }
+.price-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; display: flex; flex-direction: column; position: relative; transition: border-color .2s, transform .2s; }
+.price-card:hover { border-color: rgba(20,184,166,.3); transform: translateY(-2px); }
+.price-card.featured { border-color: rgba(20,184,166,.4); background: rgba(20,184,166,.03); }
+.price-badge-top { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 700; padding: 3px 14px; border-radius: 99px; background: var(--teal); color: var(--navy); white-space: nowrap; text-transform: uppercase; letter-spacing: .06em; }
+.price-name { font-size: 12px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.price-amt { font-family: var(--font-d); font-size: 46px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.price-amt sup { font-size: 20px; vertical-align: super; margin-top: 6px; display: inline-block; }
+.price-per { font-size: 13px; color: var(--text-3); margin-bottom: 20px; }
+.price-btn { display: block; width: 100%; padding: 11px; border-radius: var(--radius); font-family: var(--font-b); font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; transition: all .15s; margin-bottom: 18px; }
+.pb-teal { background: var(--teal); color: var(--navy); border: none; }
+.pb-teal:hover { background: var(--teal-2); }
+.pb-outline { background: transparent; color: var(--text-2); border: 1px solid var(--border-2); }
+.pb-outline:hover { border-color: var(--teal); color: var(--teal); }
+.price-features { list-style: none; flex: 1; }
+.price-features li { font-size: 13px; color: var(--text-2); padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.price-features li:last-child { border-bottom: none; }
+.pf-check { color: var(--teal); flex-shrink: 0; }
+.pf-x { color: var(--text-3); flex-shrink: 0; }
+
+/* ── TESTIMONIALS ── */
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+@media (max-width: 800px) { .testi-grid { grid-template-columns: 1fr; } }
+.testi { background: var(--navy-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px; }
+.testi-stars { color: var(--teal); letter-spacing: 2px; font-size: 14px; margin-bottom: 14px; }
+.testi-q { font-family: var(--font-d); font-size: 18px; font-style: italic; line-height: 1.5; margin-bottom: 18px; }
+.testi-author { display: flex; gap: 10px; align-items: center; }
+.testi-av { width: 34px; height: 34px; border-radius: 50%; background: var(--navy-4); border: 1px solid var(--border-2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--text-2); flex-shrink: 0; }
+.testi-name { font-size: 13px; font-weight: 500; }
+.testi-role { font-size: 12px; color: var(--text-3); }
+
+/* ── FAQ ── */
+.faq-wrap { max-width: 700px; margin: 52px auto 0; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q { width: 100%; background: none; border: none; color: var(--text); font-family: var(--font-b); font-size: 15px; font-weight: 400; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; line-height: 1.4; transition: color .15s; }
+.faq-q:hover { color: var(--teal); }
+.faq-icon { color: var(--teal); font-size: 18px; transition: transform .2s; flex-shrink: 0; }
+.faq-q.open .faq-icon { transform: rotate(45deg); }
+.faq-a { font-size: 15px; color: var(--text-2); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; }
+.faq-a.open { max-height: 300px; padding-bottom: 20px; }
+
+/* ── FOOTER CTA ── */
+.footer-cta-section { text-align: center; padding: 100px 32px; }
+.fcs-title { font-family: var(--font-d); font-size: clamp(38px, 5vw, 64px); font-weight: 700; line-height: 1.05; letter-spacing: -.02em; max-width: 680px; margin: 0 auto 20px; }
+.fcs-title em { font-style: italic; color: var(--teal); }
+.fcs-sub { font-size: 17px; font-weight: 300; color: var(--text-2); max-width: 440px; margin: 0 auto 36px; }
+.fcs-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer { padding: 36px 32px; border-top: 1px solid var(--border); }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+.footer-logo { font-family: var(--font-d); font-size: 19px; font-weight: 700; color: var(--text-2); }
+.footer-logo span { color: var(--teal); }
+.footer-links { display: flex; gap: 22px; }
+.footer-links a { font-size: 13px; color: var(--text-3); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--text-2); }
+.footer-copy { font-size: 12px; color: var(--text-3); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">Rent<span>Guard</span> AI</a>
+  <div class="nav-links">
+    <a href="#modules">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="/rentguard/app/" class="nav-cta">Start free →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="teal-orb orb-1"></div>
+  <div class="teal-orb orb-2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">AI for small landlords</div>
+      <h1 class="hero-h1">Your AI property<br>manager. <em>Always on.</em></h1>
+      <p class="hero-p">Screen tenants, triage maintenance, generate lease documents, and analyze cash flow — all in one place, powered by AI that actually understands property management.</p>
+      <div class="hero-btns">
+        <a href="/rentguard/app/" class="btn-hero">Start free today →</a>
+        <a href="#modules" class="btn-ghost">See all features ↓</a>
+      </div>
+      <div class="hero-proof">
+        <div><div class="proof-num">1–10</div><div class="proof-label">units — built for you</div></div>
+        <div class="proof-sep"></div>
+        <div><div class="proof-num">5</div><div class="proof-label">AI modules included</div></div>
+        <div class="proof-sep"></div>
+        <div><div class="proof-num">$19</div><div class="proof-label">per month to start</div></div>
+      </div>
+    </div>
+    <div class="hero-ui">
+      <div class="ui-card">
+        <div class="ui-bar">
+          <div class="ui-dots"><div class="ud ud1"></div><div class="ud ud2"></div><div class="ud ud3"></div></div>
+          <div class="ui-title">RentGuard AI — Maintenance Triage</div>
+        </div>
+        <div class="ui-body">
+          <div class="ui-chat-msg">Water dripping from the ceiling in Unit 2 bedroom. Started last night, getting worse.</div>
+          <div class="ui-triage">
+            <div class="ui-triage-header">
+              <span class="ui-badge ui-b-urgent">URGENT — 24hr</span>
+              <span style="font-size:12px;color:var(--text-3)">Plumbing leak</span>
+            </div>
+            <div class="ui-triage-row"><span>Estimated cost</span><span style="color:var(--text)">$180–$450</span></div>
+            <div class="ui-triage-row"><span>DIY possible?</span><span style="color:var(--amber)">No — plumber needed</span></div>
+            <div class="ui-triage-row"><span>Tenant message</span><span style="color:var(--teal)">Ready to copy →</span></div>
+          </div>
+          <div class="ui-score">
+            <div class="ui-ring">92</div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px">Tenant approved</div>
+              <span class="ui-badge ui-b-ok" style="font-size:10px">Fair Housing compliant screening</span>
+            </div>
+          </div>
+          <div class="ui-checks">
+            <div class="ui-check"><span class="ui-check-ok">✓</span><span style="font-size:12px;color:var(--text-2)">Income 3.2x rent — passes</span></div>
+            <div class="ui-check"><span class="ui-check-ok">✓</span><span style="font-size:12px;color:var(--text-2)">Credit 694 — acceptable</span></div>
+            <div class="ui-check"><span class="ui-check-ok">✓</span><span style="font-size:12px;color:var(--text-2)">No prior evictions</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-chip"><strong>Fair Housing</strong> compliance on every screen</div>
+    <div class="trust-dot"></div>
+    <div class="trust-chip"><strong>AI maintenance triage</strong> with cost estimates</div>
+    <div class="trust-dot"></div>
+    <div class="trust-chip"><strong>10 lease templates</strong> ready to send</div>
+    <div class="trust-dot"></div>
+    <div class="trust-chip"><strong>NOI + cash flow</strong> analysis</div>
+    <div class="trust-dot"></div>
+    <div class="trust-chip"><strong>Works on any device</strong> — installable PWA</div>
+  </div>
+</div>
+
+<!-- ══ PROBLEM / SOLUTION ══ -->
+<section>
+  <div class="inner">
+    <div class="reveal">
+      <div class="s-label">Why RentGuard</div>
+      <h2 class="s-title">Managing 1–10 units has always been<br>an afterthought for big software</h2>
+      <p class="s-sub">Enterprise platforms charge $100–$300/month for features a solo landlord doesn't need. Spreadsheets are a liability. RentGuard fills the gap.</p>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="compare-card">
+        <div class="cc-label">What you do now</div>
+        <div class="cc-title">Spreadsheets + email + guessing</div>
+        <ul class="cc-list">
+          <li><span class="cc-check-bad">✗</span>Manual rent tracking — easy to miss</li>
+          <li><span class="cc-check-bad">✗</span>No screening framework — Fair Housing risk</li>
+          <li><span class="cc-check-bad">✗</span>Google "how urgent is this repair?" every time</li>
+          <li><span class="cc-check-bad">✗</span>Write every notice from scratch</li>
+          <li><span class="cc-check-bad">✗</span>No idea if your property is actually profitable</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <div class="cc-label">Enterprise software</div>
+        <div class="cc-title">Built for 50+ unit portfolios</div>
+        <ul class="cc-list">
+          <li><span class="cc-check-bad">✗</span>$100–$300/month minimum</li>
+          <li><span class="cc-check-bad">✗</span>Weeks to set up, steep learning curve</li>
+          <li><span class="cc-check-bad">✗</span>Overkill features you'll never use</li>
+          <li><span class="cc-check-bad">✗</span>Basic AI bolted on, not built in</li>
+          <li><span class="cc-check-bad">✗</span>No conversational AI assistant</li>
+        </ul>
+      </div>
+      <div class="compare-card highlighted">
+        <div class="cc-label">RentGuard AI</div>
+        <div class="cc-title good">Built for you — 1 to 10 units</div>
+        <ul class="cc-list">
+          <li><span class="cc-check-good">✓</span>AI assistant answers any landlord question instantly</li>
+          <li><span class="cc-check-good">✓</span>Fair Housing-compliant tenant screening in minutes</li>
+          <li><span class="cc-check-good">✓</span>Maintenance triage with cost estimates + tenant messages</li>
+          <li><span class="cc-check-good">✓</span>10 professional lease templates ready to send</li>
+          <li><span class="cc-check-good">✓</span>Cash flow and NOI analysis with recommendations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MODULES ══ -->
+<section class="modules-bg" id="modules">
+  <div class="inner">
+    <div class="reveal">
+      <div class="s-label">Five AI modules</div>
+      <h2 class="s-title">Everything a small landlord needs. Nothing extra.</h2>
+      <p class="s-sub">Each module is powered by AI trained specifically on landlord workflows, tenant law, and property management best practices.</p>
+    </div>
+    <div class="module-grid reveal">
+      <div class="module-cell">
+        <span class="mod-icon">✦</span>
+        <div class="mod-title">AI Assistant</div>
+        <div class="mod-desc">Ask anything — late rent, lease breaks, Fair Housing questions, state law context, eviction process guidance, vendor communication. Available 24/7, responds in seconds.</div>
+        <div class="mod-tags"><span class="mod-tag">Always on</span><span class="mod-tag">Fair Housing guidance</span></div>
+      </div>
+      <div class="module-cell">
+        <span class="mod-icon">🔧</span>
+        <div class="mod-title">Maintenance triage</div>
+        <div class="mod-desc">Describe any issue and get instant triage level (emergency/urgent/routine), cost estimate range, step-by-step action plan, vendor type needed, and a ready-to-send tenant message.</div>
+        <div class="mod-tags"><span class="mod-tag">Cost estimates</span><span class="mod-tag">Tenant messaging</span></div>
+      </div>
+      <div class="module-cell">
+        <span class="mod-icon">👤</span>
+        <div class="mod-title">Tenant screening</div>
+        <div class="mod-desc">Enter applicant details and get a comprehensive screening report with an overall score, income ratio, credit assessment, rental history review, and Fair Housing compliance reminder.</div>
+        <div class="mod-tags"><span class="mod-tag">Consistent criteria</span><span class="mod-tag">Fair Housing</span></div>
+      </div>
+      <div class="module-cell">
+        <span class="mod-icon">$</span>
+        <div class="mod-title">Cash flow analyzer</div>
+        <div class="mod-desc">Enter your property's income and expenses. Get NOI, cap rate, cash-on-cash return, expense ratio, rent increase opportunity analysis, and specific recommendations to improve profitability.</div>
+        <div class="mod-tags"><span class="mod-tag">NOI analysis</span><span class="mod-tag">Optimization tips</span></div>
+      </div>
+      <div class="module-cell">
+        <span class="mod-icon">📄</span>
+        <div class="mod-title">Lease tools</div>
+        <div class="mod-desc">Generate 10 professional documents in seconds: late rent notices, lease renewals, rent increase notices, move-out instructions, entry notices, pet addenda, and more. Customized to your situation.</div>
+        <div class="mod-tags"><span class="mod-tag">10 templates</span><span class="mod-tag">Instant generation</span></div>
+      </div>
+      <div class="module-cell">
+        <span class="mod-icon">📱</span>
+        <div class="mod-title">Mobile PWA</div>
+        <div class="mod-desc">Install RentGuard on your Android home screen for instant access. Works offline for drafting. Push notifications available. No app store required. Works on iPhone Safari too.</div>
+        <div class="mod-tags"><span class="mod-tag">Installable</span><span class="mod-tag">Offline support</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section id="pricing" class="price-section">
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <div class="s-label">Pricing</div>
+      <h2 class="s-title">Simple. Fair. Cancel anytime.</h2>
+      <p class="s-sub" style="margin:0 auto 0">Pay per property, not per user. Every tier includes all 5 modules.</p>
+    </div>
+    <div class="price-grid reveal">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amt"><sup>$</sup>19</div>
+        <div class="price-per">per month</div>
+        <a href="https://rentguard.gumroad.com/l/starter" class="price-btn pb-outline" target="_blank">Get Starter</a>
+        <ul class="price-features">
+          <li><span class="pf-check">✓</span> Up to 3 units</li>
+          <li><span class="pf-check">✓</span> All 5 AI modules</li>
+          <li><span class="pf-check">✓</span> 100 AI queries/month</li>
+          <li><span class="pf-check">✓</span> 10 lease templates</li>
+          <li><span class="pf-x">—</span> <span style="color:var(--text-3)">Portfolio dashboard</span></li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge-top">Most popular</div>
+        <div class="price-name">Landlord</div>
+        <div class="price-amt"><sup>$</sup>39</div>
+        <div class="price-per">per month</div>
+        <a href="https://rentguard.gumroad.com/l/landlord" class="price-btn pb-teal" target="_blank">Get Landlord</a>
+        <ul class="price-features">
+          <li><span class="pf-check">✓</span> Up to 10 units</li>
+          <li><span class="pf-check">✓</span> All 5 AI modules</li>
+          <li><span class="pf-check">✓</span> Unlimited AI queries</li>
+          <li><span class="pf-check">✓</span> 10 lease templates</li>
+          <li><span class="pf-check">✓</span> Portfolio dashboard</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Portfolio</div>
+        <div class="price-amt"><sup>$</sup>79</div>
+        <div class="price-per">per month</div>
+        <a href="https://rentguard.gumroad.com/l/portfolio" class="price-btn pb-outline" target="_blank">Get Portfolio</a>
+        <ul class="price-features">
+          <li><span class="pf-check">✓</span> Unlimited units</li>
+          <li><span class="pf-check">✓</span> All 5 AI modules</li>
+          <li><span class="pf-check">✓</span> Unlimited AI queries</li>
+          <li><span class="pf-check">✓</span> Priority AI speed</li>
+          <li><span class="pf-check">✓</span> Portfolio dashboard</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section>
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <div class="s-label">Landlord stories</div>
+      <h2 class="s-title">Built by landlords, for landlords</h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-q">"The maintenance triage alone saves me hours. I described a weird HVAC noise and it told me exactly what it was, estimated $200–$400, and gave me a message to send my tenant. Incredible."</div>
+        <div class="testi-author"><div class="testi-av">DM</div><div><div class="testi-name">David M.</div><div class="testi-role">6-unit landlord — Denver, CO</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-q">"I was always nervous about Fair Housing when screening tenants. RentGuard gives me a consistent scorecard every time and reminds me to apply identical criteria. That peace of mind is worth everything."</div>
+        <div class="testi-author"><div class="testi-av">KL</div><div><div class="testi-name">Karen L.</div><div class="testi-role">4-unit landlord — Austin, TX</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-q">"I had no idea my expense ratio was 58% until I ran the cash flow analyzer. It told me exactly where to cut and estimated I could improve NOI by $280/month with two changes. Already implemented them."</div>
+        <div class="testi-author"><div class="testi-av">RB</div><div><div class="testi-name">Ryan B.</div><div class="testi-role">8-unit portfolio — Nashville, TN</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <div class="s-label">FAQ</div>
+      <h2 class="s-title">Common questions</h2>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What does the AI Assistant actually know? <span class="faq-icon">+</span></button><div class="faq-a">The AI Assistant is trained on landlord-tenant law, Fair Housing guidelines, maintenance triage, lease management, and property investment principles. It can help with late rent situations, lease break requests, Fair Housing questions, maintenance decisions, rent pricing, vendor communications, eviction process guidance, and general property management questions. It provides general guidance — not legal advice — and always recommends consulting a local attorney for complex legal matters.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does the tenant screening work with Fair Housing? <span class="faq-icon">+</span></button><div class="faq-a">RentGuard's screening module applies consistent, documented criteria to every applicant — income ratio, credit score, rental history, and employment stability. The system explicitly excludes any protected class information and reminds you at every step to apply identical standards. You enter the financial and rental history data; the AI scores it against your defined criteria. This creates an auditable, consistent screening record that demonstrates equal treatment.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does RentGuard replace my property management software? <span class="faq-icon">+</span></button><div class="faq-a">RentGuard is an AI intelligence layer — it handles the decision-making, document generation, and analysis work. It doesn't currently process rent payments or handle accounting in the way dedicated platforms like Baselane or TurboTenant do. Most landlords use RentGuard alongside a payment processor. Many find they can drop their existing PM software entirely once they see how much RentGuard handles.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I use RentGuard on my phone? <span class="faq-icon">+</span></button><div class="faq-a">Yes. RentGuard is a Progressive Web App — it works in any browser on any device. On Android Chrome, you'll be prompted to install it to your home screen for full app-like behavior, offline draft support, and push notifications. On iPhone, tap Share → Add to Home Screen in Safari. No app store required, no download needed, no storage consumed.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the difference between the three pricing tiers? <span class="faq-icon">+</span></button><div class="faq-a">All three tiers include every AI module. The difference is unit count and query volume. Starter supports up to 3 units with 100 AI queries/month — plenty for a duplex or triplex. Landlord supports up to 10 units with unlimited queries. Portfolio is for unlimited units with priority AI speed. If you're not sure, start with Starter — you can upgrade anytime without losing data.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER CTA ══ -->
+<section class="footer-cta-section">
+  <div class="inner reveal">
+    <h2 class="fcs-title">Stop managing your properties.<br>Let <em>RentGuard</em> think for you.</h2>
+    <p class="fcs-sub">Five AI modules. One platform. Built for landlords with 1–10 units who are tired of doing everything manually.</p>
+    <div class="fcs-btns">
+      <a href="/rentguard/app/" class="btn-hero">Start free today →</a>
+      <a href="#pricing" class="btn-ghost">View pricing ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Rent<span>Guard</span> AI</div>
+    <div class="footer-links">
+      <a href="/rentguard/app/">App</a>
+      <a href="#modules">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="mailto:hello@rentguard.ai">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 RentGuard AI. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+
+const obs = new IntersectionObserver(
+  es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: .1, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function toggleFaq(btn) {
+  const body = btn.nextElementSibling;
+  const open = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+  if (!open) { btn.classList.add('open'); body.classList.add('open'); }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
